@@ -1,0 +1,73 @@
+import controlP5.*;
+ControlP5 controller;
+Textfield prompt;
+Textfield message;
+Textarea history;
+
+void setup()
+{
+  size (600,400);
+  noStroke();
+  smooth();
+  PFont futura= createFont("proxima nova" ,15);
+  
+  controller = new ControlP5(this);
+  
+   
+
+            
+  //create a new textfield named message
+  message= controller.addTextfield(" ")
+            .setPosition(30, 350)
+            .setSize(540, 30)
+            .setFont(futura)
+            .setColor(color(50))
+            .setAutoClear(true)
+            .setColorBackground(color(0,0,0,40)) 
+           //.setColorForeground(color(200,0,0,0)) 
+            ;
+            //.setValue("type your message here");
+            
+             
+            
+//create a textarea named chat history
+  history= controller.addTextarea("history")
+            .setPosition(30,30)
+            .setSize(530, 300)
+            .setFont(futura)
+            .setColor(color(150,100,150))
+            .setLineHeight(20)
+            .setColorBackground(color(255,100))
+            .setColorForeground(color(255,100))
+            .setText("chat history appears here")
+            ;
+      
+  
+           }
+           
+void draw()
+{
+background(10);
+color(255);
+text("type your message", 40, 370);
+//read message 
+//String newmessagefff = message.getText();
+if(message.isMousePressed())
+{
+ message.setColorBackground(color(255)); }
+}
+  
+
+//on pressing enter the string in text field gets appended to the string
+//in the text area
+
+void keyPressed()
+{
+  if(key== RETURN || key== ENTER)
+  {//append text to history
+ // String previousHistory = history.getText();
+//String historynew = previousHistory.concat(message.getText());
+history.setText(history.getText() + '\n' + "Surabhi: " + message.getText());
+}
+}
+
